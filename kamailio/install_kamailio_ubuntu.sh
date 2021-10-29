@@ -12,6 +12,7 @@ apt update
 apt -y install mariadb-server
 apt -y install kamailio kamailio-mysql-modules
 apt -y install kamailio-tls-modules
+apt -y install net-tools ngrep
 
 sed -i "s/^# DBENGINE.*/DBENGINE=MYSQL/" /etc/kamailio/kamctlrc
 sed -i "s/^# DBHOST.*/DBHOST=localhost/" /etc/kamailio/kamctlrc
