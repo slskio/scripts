@@ -2,15 +2,12 @@
 
 for i in `cat route.csv`
 do
-	did=$(echo $i | cut -d , -f1)
-	setid=$(echo $i | cut -d , -f2)
+	did=$(echo $i | cut -d , -f2)
+	setid=$(echo $i | cut -d , -f3)
 
-	# echo "add $did - $setid"
-
-	echo "kamctl db exec \"INSERT INTO mtree (id, tprefix, tvalue) VALUES (NULL, '$did', '$setid')\";"
-	# kamctl db exec "INSERT INTO mtree (id, tprefix, tvalue) VALUES (NULL, '$did', '$setid')";
+	# Add a new mtree record to database
+	kamcli mtree db-add mtree $did $setid
 done
 
 # Reload MTREE
-echo "kamcmd mtree.reload srt"
-# kamcmd mtree.reload srt
+kamcli mtree reload srt
